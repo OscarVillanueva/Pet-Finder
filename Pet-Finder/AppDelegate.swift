@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Toma el ciclo de vida de la app
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

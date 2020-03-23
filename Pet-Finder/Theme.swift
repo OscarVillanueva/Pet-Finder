@@ -6,7 +6,7 @@
 //  Copyright © 2020 Oscar Villanueva. All rights reserved.
 //
 
-// Cambiar temas del usuario
+// Cambiar temas de la app
 import UIKit
 
 enum Theme: Int {
