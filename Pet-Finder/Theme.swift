@@ -99,7 +99,7 @@ enum Theme: Int {
     // Guardamos y aplicamos los cambios a la vista
     func apply(){
         
-        // Global
+        // Configuración global
         UserDefaults.standard.set(rawValue, forKey: Keys.selectedTheme)
         UserDefaults.standard.synchronize()
         
