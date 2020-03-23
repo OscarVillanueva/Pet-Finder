@@ -11,11 +11,37 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
+    private let solar = Solar(for: Date(), latitude: 20.4887879, longitude: -100.9604602)
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        initThemes()
         return true
+    }
+    
+    func initThemes() {
+        if solar!.isDaytime {
+            Theme.current.apply()
+            scheduleThemeTimer()
+        }
+        else {
+            Theme.dark.apply()
+        }
+    }
+    
+    func scheduleThemeTimer(){
+        let timer = Timer(fire: solar!.sunset!, interval: 0, repeats: false) { [weak self] _ in
+            Theme.dark.apply()
+            
+            self?.window?.subviews.forEach({ (view: UIView) in
+                view.removeFromSuperview()
+                self?.window?.addSubview(view)
+            })
+        }
+        
+        RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -31,7 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
 
 }
 

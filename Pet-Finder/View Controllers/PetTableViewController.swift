@@ -43,6 +43,8 @@ class PetTableViewController: UITableViewController {
     
     let settingsButton = UIBarButtonItem(image: UIImage(named:"settings"), style: .plain, target: self, action: #selector(settings))
     navigationItem.leftBarButtonItem = settingsButton
+    
+    
   }
   
   override func viewWillAppear(_ animated: Bool) {

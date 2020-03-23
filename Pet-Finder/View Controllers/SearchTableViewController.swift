@@ -39,6 +39,9 @@ class SearchTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    speciesSelector.setImage(UIImage(named: "dog"), forSegmentAt: 0)
+    speciesSelector.setImage(UIImage(named: "cat"), forSegmentAt: 1)
+    
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .done, target: self, action: #selector(dismissAnimated))
     
     updateNumberOfPaws(pawStepper)
